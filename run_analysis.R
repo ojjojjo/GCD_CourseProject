@@ -3,15 +3,14 @@ getwd()
 
 
 #####Data Exploration#####
-features <- read.table("./GCD/GCD_CourseProject/UCI HAR Dataset/features.txt")
+features <- read.table("features.txt")
 names(features)
 str(features)
 summary(features)
 head(features)
 features[30:40,]
 
-subject_test <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/test/subject_test.txt")
+subject_test <- read.table("subject_test.txt")
 str(subject_test[,1])
 summary(subject_test)
 b <- subject_test[,1]
@@ -19,8 +18,7 @@ class(b)
 table(b)
 unique(b)
 
-subject_train <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/train/subject_train.txt")
+subject_train <- read.table("subject_train.txt")
 str(subject_train)
 c <- subject_train[,1]
 str(c)
@@ -28,42 +26,32 @@ unique(c)
 table(c)
 
 
-X_test <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/test/X_test.txt")
+X_test <- read.table("X_test.txt")
 dim(X_test)
 head(X_test)
 
-X_train <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/train/X_train.txt")
+X_train <- read.table("X_train.txt")
 str(X_train)
 
-y_test <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/test/y_test.txt")
+y_test <- read.table("y_test.txt")
 str(y_test)
 head(y_test)
 unique(y_test[,1])
 
-y_train <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/train/y_train.txt")
+y_train <- read.table("y_train.txt")
 str(y_train)
 head(y_train)
 unique(y_train[,1])
 
-total_acc_z_train <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/train/Inertial Signals/total_acc_z_train.txt")
-dim(total_acc_z_train)
 
 ######Data Preparation#########
 
 #Step 1: Read Data
 # Read Variable Names
-features <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/features.txt")
+features <- read.table("features.txt")
 # Read X_test and X_train
-X_test.raw <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/test/X_test.txt")
-X_train.raw <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/train/X_train.txt")
+X_test.raw <- read.table("X_test.txt")
+X_train.raw <- read.table("X_train.txt")
 
 X_test <- X_test.raw
 X_train <- X_train.raw
@@ -86,10 +74,8 @@ dim(X_train)
 #       using Subject_test.txt and Subject_train.txt respectively
 
 #import subject_test.txt and subject_train.txt
-subject_test <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/test/subject_test.txt")
-subject_train <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/train/subject_train.txt")
+subject_test <- read.table("subject_test.txt")
+subject_train <- read.table("subject_train.txt")
 
 dim(subject_test)
 ID_test <- subject_test[,1]
@@ -107,15 +93,12 @@ X_train.IDed <- data.frame(cbind(ID_train, X_train))
 #        using "activity_labels.txt"
 
 ## import "activity_labels.txt"
-activity_labels <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/activity_labels.txt")
+activity_labels <- read.table("activity_labels.txt")
 as.character(activity_labels[,2])
 
 ## import "y_test.txt" and "y_train.txt"
-y_test <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/test/y_test.txt")
-y_train <- read.table(
-  "./GCD/GCD_CourseProject/UCI HAR Dataset/train/y_train.txt")
+y_test <- read.table("y_test.txt")
+y_train <- read.table("y_train.txt")
 
 str(y_test)
 str(y_train)
@@ -269,7 +252,7 @@ dim(MSD.ID.y.melted)
 #     Cast the dataframe and creating the dataframe
 tidydataset <- dcast(MSD.ID.y.melted, ID + Activity ~ variable, mean)
 names(tidydataset)
-write.table(tidydataset, file = "./GCD/GCD_CourseProject/tidydataset.txt")
+write.table(tidydataset, file = "tidydataset2.txt")
 
 
 
