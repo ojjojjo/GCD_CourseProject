@@ -23,23 +23,21 @@ This dataset is pre-processed data from the sensor signals (accelerometer and gy
 
 2. Add ID information using cbind function to combine subject_train with X_train, as well as subject_test with X_test.
 
-3. Add Activity information
-3.1 Read "y_train.txt" and "y_test.txt", save them as factors, and relevel them using labels available through "activity_labels.txt"
-3.2 Using cbind function to combine y_train with X_train, as well as y_test with X_train.
+3. Add Activity information.
+First, reading "y_train.txt" and "y_test.txt", save them as factors, and relevel them using labels available through "activity_labels.txt".
+Second, using cbind function to combine y_train with X_train, as well as y_test with X_train.
 
 
 4. The whole dataset is obtained through combining X_train and X_test using rbind. They are stacked together because they each is a subset of the whole dataset, as described ealier, that they each contains data on a subset of subjects.
 
-5. Extracts only the measurements on the mean and standard deviation for each measurement
-5.1 Extracts variables that contains "mean" and "std" in the variable names using regular expressions
-5.2 Examining the variable names extracted and removed irrelavant variables manually.
+5. Extracts only the measurements on the mean and standard deviation for each measurement.
+First, extracting variables that contains "mean" and "std" in the variable names using regular expressions;
+Second, examining the variable names extracted and removed irrelavant variables manually.
 
-6. Appropriately labels the data set with descriptive activity names
-6.1 remove all "." in the variable names using regular expressions. :)
-6.2 Manually fix the errors in the new variable names
+6. Appropriately labels the data set with descriptive activity names. First, removing all "." in the variable names using regular expressions. :) Second, manually fixing the errors in the new variable names
 
 7. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
-7.1 Remove variables that are not the main measurements for this dataset, which are on angle() measurements.
-7.2 Melt the dataframe with id variables being "ID" and "Activity"
-7.3 Get the tidy dataset by casting the dataframe taking the mean of each unique combination of "ID" and "Activity"
-7.4 Save the tidy dataset in a ".txt" file.
+First, removing variables that are not the main measurements for this dataset, which are on angle() measurements.
+Second, melting the dataframe with id variables being "ID" and "Activity"
+Third, getting the tidy dataset by casting the dataframe taking the mean of each unique combination of "ID" and "Activity"
+Lastly, saving the tidy dataset in a "tidydataset.txt" file.
